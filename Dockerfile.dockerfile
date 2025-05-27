@@ -1,10 +1,7 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
-# Copier les fichiers PHP
+# Copie les fichiers dans le conteneur
 COPY . /var/www/html/
 
-# Exposer le port
-EXPOSE 80
-
-# Commande par défaut
-CMD ["apache2-foreground"]
+# Active mod_rewrite si nécessaire
+RUN a2enmod rewrite
